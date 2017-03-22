@@ -793,21 +793,21 @@ pam_sm_chauthtok(pam_handle_t *pamh, int flags, int argc, const char **argv)
 	    return PAM_AUTHTOK_ERR;
 	  }
 
-//	  D(("testing password"));
-//	  /* now test this passwd against cracklib */
-//
-//	  D(("against cracklib"));
-//	  if ((crack_msg = FascistCheck (newtoken, options.cracklib_dictpath))) {
-//	    if (ctrl & PAM_DEBUG_ARG)
-//	      pam_syslog(pamh,LOG_DEBUG,"bad password: %s",crack_msg);
-//	    pam_error (pamh, _("BAD PASSWORD: %s"), crack_msg);
-//	    if (getuid() || options.enforce_for_root || (flags & PAM_CHANGE_EXPIRED_AUTHTOK))
-//	      {
-//		pam_set_item (pamh, PAM_AUTHTOK, NULL);
-//		retval = PAM_AUTHTOK_ERR;
-//		continue;
-//	      }
-//	  }
+	  D(("testing password"));
+	  /* now test this passwd against cracklib */
+
+	  D(("against cracklib"));
+	  if (0) { // Never enter this.
+	    if (ctrl & PAM_DEBUG_ARG)
+	      pam_syslog(pamh,LOG_DEBUG,"bad password: %s",crack_msg);
+	    pam_error (pamh, _("BAD PASSWORD: %s"), crack_msg);
+	    if (getuid() || options.enforce_for_root || (flags & PAM_CHANGE_EXPIRED_AUTHTOK))
+	      {
+		pam_set_item (pamh, PAM_AUTHTOK, NULL);
+		retval = PAM_AUTHTOK_ERR;
+		continue;
+	      }
+	  }
 
 	  /* check it for strength too... */
 	  D(("for strength"));
