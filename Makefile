@@ -13,8 +13,8 @@ install:
 
 activate:
 	# Switch to use verified module
-	sed -i -e's/pam_cracklib\.so.*/pam_cracklib_nodict\.so/g' /etc/pam.d/common-password
+	sed -i -e's/pam_cracklib\.so/pam_cracklib_nodict\.so/g' /etc/pam.d/common-password
 
 deactivate:
 	# Switch back to default module
-	sed -i -e's/pam_cracklib_nodict\.so/pam_cracklib\.so retry=3 minlen=8 difok=3 maxclassrepeat=2/g' /etc/pam.d/common-password
+	sed -i -e's/pam_cracklib_nodict\.so/pam_cracklib\.so/g' /etc/pam.d/common-password
