@@ -12,7 +12,7 @@ install:
 	yes | cp -f ./pam_cracklib_nodict.so /lib/security
 
 activate:
-	# Switch to use verified module
+	# Switch to use module with dictionary check disabled
 	sed -i -e's/pam_cracklib\.so/pam_cracklib_nodict\.so/g' /etc/pam.d/common-password
 
 deactivate:
